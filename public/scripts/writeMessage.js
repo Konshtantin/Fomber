@@ -4,7 +4,7 @@ const mesBoard = document.querySelector('.message-board')
 
 
 const scrollToEnd = () => {
-    mesBoard.scrollTop += mesBoard.scrollHeight
+    mesBoard.scrollTop += 2 * mesBoard.scrollHeight
     window.scrollY += innerHeight
 }
 const createMessage = (text, date) => {
