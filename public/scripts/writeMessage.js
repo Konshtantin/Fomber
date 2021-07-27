@@ -5,6 +5,7 @@ const mesBoard = document.querySelector('.message-board')
 
 const scrollToEnd = () => {
     mesBoard.scrollTop += mesBoard.scrollHeight
+    window.scrollY += innerHeight
 }
 const createMessage = (text, date) => {
     const message = document.createElement('div')
