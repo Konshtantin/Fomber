@@ -5,6 +5,7 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 
 .header{
@@ -15,6 +16,7 @@
     align-items: center;
     justify-content: space-around;
     height: 10vh;
+    max-height: 5rem;
     padding: 1rem 0;
     background-color: rgba(240, 248, 255, 0.85);
     border-bottom: 1px solid #ddd;
@@ -30,7 +32,6 @@
     flex-direction: row;
     min-width: 15vw;
     justify-content: space-between;
-    
 }
 .header-menu__item{
     font-size: 1rem;
@@ -47,6 +48,9 @@ main {
     align-items: center;
     padding-top: 10vh;
     min-height: 100vh;
+    background-image: url('/img/background.png');
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .signup,
 .login{
@@ -144,13 +148,11 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 50vw;
+    width: 60vw;
     background-color: aliceblue;
     height: 90vh;
-    background-image: url('/img/background.png');
-    background-size: cover;
-    background-repeat: no-repeat;
     padding: 1rem;
+    background-color: transparent;
 }
 
 
@@ -246,4 +248,47 @@ main {
 .warning a {
     color: #fff;
     text-decoration: none;
+}
+
+@media screen and (max-width: 760px) {
+    .header {
+        max-height: 3rem;
+        background-color: #fff;
+    }
+    .header-menu {
+        min-width: 30vw;
+        font-size: 1rem;
+    }
+    .header-menu__item {
+        font-size: .8rem;
+    }
+    .signup,
+    .login{
+        height: 50vh;
+        width: 40vh;
+    }
+    .signup h2,
+    .login h2 {
+        font-size: 1.4rem;
+    }
+    .form-group label {
+        font-size: .9rem;
+        font-weight: 400;
+        letter-spacing: 1px;
+    }
+    .form-group input {
+        font-size: .9rem;
+        color: rgb(219, 219, 219);
+    }
+    .form-group .error{
+        font-size: .7rem;
+        font-weight: 500;
+    }
+    .chat{
+        width: 100vw;
+    }
+    .message-text {
+        font-size: .9rem;
+        line-height: 1.1rem;
+    }
 }

@@ -2,7 +2,11 @@ const messageInput = document.querySelector('#message')
 const sendButton = document.querySelector('.send')
 const mesBoard = document.querySelector('.message-board')
 
-createMessage = (text, date) => {
+
+const scrollToEnd = () => {
+    mesBoard.scrollTop += mesBoard.scrollHeight
+}
+const createMessage = (text, date) => {
     const message = document.createElement('div')
     const messageAuthor = document.createElement('div')
     const messageText = document.createElement('div')
@@ -61,4 +65,5 @@ sendButton.addEventListener('click', (event) => {
     sendMessage()
 })
 
+scrollToEnd()
 
