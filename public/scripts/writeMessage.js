@@ -65,5 +65,6 @@ sendButton.addEventListener('click', (event) => {
     sendMessage()
 })
 
-scrollToEnd()
+onload = scrollToEnd()
+
 
