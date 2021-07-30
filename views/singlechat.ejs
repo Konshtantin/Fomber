@@ -1,0 +1,51 @@
+<%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <main class="main">
+        <%- include('./partials/sidebar') %>
+        <% if (!error) { %>
+            <section class="chat">
+                <div class="chat-header">
+                    <div class="chatname"><%= chat.chatname %></div>
+                    <div class="chatusers"><%= chat.userCount %> members</div>
+                </div>
+                <div class="message-board">
+                    <% if (user) { %>
+                        <% messages.forEach(message => { %>
+                            <div class="message <%= user._id.toString() === message.author._id.toString() ? 'self' : '' %>">
+                                <div class="message-author"><%= user._id.toString() === message.author._id.toString() ? 'Вы' : message.author.username %></div> 
+                                <div class="message-text"><%= message.text %></div>
+                                <div class="message-date"><%= message.getdate %></div>
+                            </div>
+                        <% }) %>
+                    <% } else { %>
+                        <% messages.forEach(message => { %>
+                            <div class="message">
+                                <div class="message-text"><%= message.text %></div>
+                                <div class="message-date"><%= message.getdate %></div>
+                            </div>
+                        <% }) %>
+                    <% } %>
+                    
+                </div>
+                <% if (user) { %>
+                    <div class="newmessage">
+                        <input type="text" name="message" id="message" placeholder="Сообщение">
+                        <button class="send"></button>
+                    </div>
+                <% } else { %>
+                    <div class="warning">
+                        <p><a href="/signup">Зарегистрируйтесь</a>  или <a href="/login">войдите</a>, чтобы писать в чате</p>
+                    </div>
+                <% } %>
+    
+            </section>
+        <% } else { %>
+            <div class="error"><%= error %></div>
+        <% } %>
+        
+    </main>
+    <script src="/scripts/writeMessage.js"></script>
+    <script src="/scripts/mobilesidebar.js"></script>
+</body>
+</html>

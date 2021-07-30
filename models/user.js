@@ -1,5 +1,4 @@
 const {Schema, model} = require('mongoose')
-const bcrypt = require('bcryptjs')
 
 const UserSchema = new Schema({
     username: {
@@ -15,12 +14,20 @@ const UserSchema = new Schema({
         type: String,
         required: true,
         minlength: 6
-    }
+    },
+    chats: [{
+        chat: {
+            type: Schema.ObjectId,
+            ref: 'Chat',
+            required: true
+        },
+        role: {
+            type: String,
+            required: true,
+            enum: ['user', 'moder', 'admin'],
+            default: 'user'
+        }
+    }]
 })
 
-UserSchema.pre('save', async function(next) {
-    this.password = await bcrypt.hash(this.password, 8)
-
-    next()
-})
 module.exports = model('User', UserSchema)

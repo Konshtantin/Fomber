@@ -9,7 +9,7 @@ const Message = require('../models/message')
 require('dotenv').config()
 
 const createToken = (id) => {
-    return jwt.sign({id}, process.env.SECRET, {expiresIn: '24h'})
+    return jwt.sign({id}, process.env.SECRET, {expiresIn: '72h'})
 }
 
 const index_get = (req, res) => {
@@ -47,15 +47,17 @@ const signup_post = async (req, res) => {
         res.json({errors: messages})
         return
     }
-    const user = await User.create({username, email, password})
+    const hash = await bcrypt.hash(password, 8)
+    const user = await User.create({username, email, password: hash})
     const token = createToken(user._id)
-    res.cookie(process.env.JWT_NAME, token, {maxAge: 1000*60*60*24})
+    res.cookie(process.env.JWT_NAME, token, {maxAge: 1000*60*60*24*3})
     res.json({user: user._id})
 }
 
 const login_get = (req, res) => {
     res.render('login')
 }
+
 const login_post = async (req, res) => {
     const {email, password} = req.body
 
@@ -77,19 +79,25 @@ const login_post = async (req, res) => {
     }
     const auth = await bcrypt.compare(password, user.password)
 
+
     if(!auth) {
         res.json({errors: {email: '', password: 'Wrong password'}})
         return
     }
     const token = createToken(user._id)
-    res.cookie(process.env.JWT_NAME, token, {maxAge: 1000*60*60*24})
+    res.cookie(process.env.JWT_NAME, token, {maxAge: 1000*60*60*24*3})
     res.json({user: user._id})
 }
 
+const logout_get = (req, res) => {
+    res.clearCookie(process.env.JWT_NAME)
+    res.redirect('/')
+}
 module.exports = {
     index_get,
     signup_get,
     signup_post,
     login_get,
-    login_post
+    login_post,
+    logout_get
 }

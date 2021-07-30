@@ -13,6 +13,11 @@ const MessageSchema = new Schema({
     date: {
         type: Date,
         default: Date.now()
+    },
+    chat: {
+        type: Schema.ObjectId,
+        ref: 'Chat',
+        required: true
     }
 })
 MessageSchema

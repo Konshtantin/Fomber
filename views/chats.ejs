@@ -1,0 +1,51 @@
+<%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <main class="main">
+        <%- include('./partials/sidebar') %>
+        <section class="chats">
+            <h2>Your chats</h2>
+            <div class="chat-list">
+                <% chats.forEach(userchat => { %>
+                    <div class="single-chat <%= userchat.role %>">
+                    <a href="/chat/<%= userchat.chat._id %>">
+                        <div class="chat-name"><%= userchat.chat.chatname %></div>
+                        <div class="chat-usercount"><%= userchat.chat.userCount %> <div class="user-icon"><img src="/img/user.svg" alt=""></div> </div>
+                        <div class="role-flag <%= userchat.role %>"></div>
+                    </a>
+                    </div>
+                    <div class="single-chat <%= userchat.role %>">
+                        <a href="/chat/<%= userchat.chat._id %>">
+                            <div class="chat-name"><%= userchat.chat.chatname %></div>
+                            <div class="chat-usercount"><%= userchat.chat.userCount %> <div class="user-icon"><img src="/img/user.svg" alt=""></div> </div>
+                            <div class="role-flag <%= userchat.role %>"></div>
+                        </a>
+                        </div>
+                        <div class="single-chat <%= userchat.role %>">
+                            <a href="/chat/<%= userchat.chat._id %>">
+                                <div class="chat-name"><%= userchat.chat.chatname %></div>
+                                <div class="chat-usercount"><%= userchat.chat.userCount %> <div class="user-icon"><img src="/img/user.svg" alt=""></div> </div>
+                                <div class="role-flag <%= userchat.role %>"></div>
+                            </a>
+                            </div>
+                            <div class="single-chat <%= userchat.role %>">
+                                <a href="/chat/<%= userchat.chat._id %>">
+                                    <div class="chat-name"><%= userchat.chat.chatname %></div>
+                                    <div class="chat-usercount"><%= userchat.chat.userCount %> <div class="user-icon"><img src="/img/user.svg" alt=""></div> </div>
+                                    <div class="role-flag <%= userchat.role %>"></div>
+                                </a>
+                                </div>
+                                <div class="single-chat <%= userchat.role %>">
+                                    <a href="/chat/<%= userchat.chat._id %>">
+                                        <div class="chat-name"><%= userchat.chat.chatname %></div>
+                                        <div class="chat-usercount"><%= userchat.chat.userCount %> <div class="user-icon"><img src="/img/user.svg" alt=""></div> </div>
+                                        <div class="role-flag <%= userchat.role %>"></div>
+                                    </a>
+                                    </div>
+                <% }) %>
+            </div>
+        </section>
+    </main>
+    <script src="/scripts/mobilesidebar.js"></script>
+</body>
+</html>

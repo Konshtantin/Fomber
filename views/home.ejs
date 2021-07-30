@@ -2,41 +2,34 @@
 <body>
     <%- include('./partials/header') %>
     <main class="main">
-        <section class="chat">
-            <div class="message-board">
-                <% if (user) { %>
-                    <% messages.forEach(message => { %>
-                        <div class="message <%= user._id.toString() === message.author._id.toString() ? 'self' : '' %>">
-                            <div class="message-author"><%= user._id.toString() === message.author._id.toString() ? 'Вы' : message.author.username %></div> 
-                            <div class="message-text"><%= message.text %></div>
-                            <div class="message-date"><%= message.getdate %></div>
-                        </div>
-                    <% }) %>
-                <% } else { %>
-                    <% messages.forEach(message => { %>
-                        <div class="message">
-                            <div class="message-text"><%= message.text %></div>
-                            <div class="message-date"><%= message.getdate %></div>
-                        </div>
-                    <% }) %>
-                <% } %>
-                
-            </div>
-            <% if (user) { %>
-                <div class="newmessage">
-                    <input type="text" name="message" id="message" placeholder="Сообщение">
-                    <button class="send"></button>
-                </div>
-            <% } else { %>
-                <div class="warning">
-                    <p><a href="/signup">Зарегистрируйтесь</a>  или <a href="/login">войдите</a>, чтобы писать в чате</p>
+        <%- include('./partials/sidebar') %>
+        <div class="information">
+            <% if (!user) { %>
+                <div>
+                    <h4>Если вы уже были зарегистрированы: </h4> 
+                    <p>1. Все учетные записи стерты из базы данных. Нужно регистрироваться заново</p> 
+                    <p>2. Все ваши сообщения стерты из базы данных</p>
                 </div>
             <% } %>
-
-        </section>
+            <div>
+                <h4>Чаты</h4>
+                <p>1. Чтобы создать чат нажмите «Create Chat» в меню Chat management</p>
+                <p>2. Чтобы посмотреть все чаты, в которых вы состоите, нажмите «Chats» в меню Chat management</p>
+                <p>3. Чтобы писать в чат, созданный вами или другим пользователем, найдите чат в «Chats» и нажмите на него</p>
+                <p>4. Цвета показывают, какие привилегии у вас есть в чате, они ещё не реализованы, как только у автора дойдут руки, он может быть это сделает(но это не точно): </p>
+                    <ul>
+                        <li>Чат зеленый - вы обычный пользователь, можете только писать сообщения</li> 
+                        <li>Чат фиолетовый - вы модератор, кроме возможности писать в чате, есть возможность удалять сообщения других пользователей</li> 
+                        <li>Чат желтый - поздравляем, вы администратор чата, вы можете делать всё то, что модератор и даже больше: + изменять название чата, удалить чат.</li> 
+                    
+                    </ul>
+            </div>
+            <div class="support-author"> <p>Если у вас есть желание поддержать автора, нажмите сюда: </p> <a href="https://www.donationalerts.com/r/konzay" target="blank" class="support">Поддержать</a></div>
+        </div>
     </main>
     <% if (user) { %>
-        <script src="/scripts/writeMessage.js"></script>
+        <script src="/scripts/mobilesidebar.js"></script>
     <% } %>
+   
 </body>
 </html>

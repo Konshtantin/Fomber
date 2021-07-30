@@ -1,0 +1,148 @@
+<%- include('./partials/head') %>
+<body>
+    <%- include('./partials/header') %>
+    <main class="main">
+        <%- include('./partials/sidebar') %>
+        <section class="createchat">
+            <h2>Create New Chat</h2>
+            <form class="createchatform">
+                <div class="groups">
+                    <div class="form-group">
+                        <label for="chatname" class="chatname">Chat Name: </label>
+                        <input type="text" name="chatname" id="chatname">
+                        <div class="chatname-error"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="chatusers">
+                            <h3>Members: </h3>
+                            <div class="user-list">
+                                <% users.forEach(u => { %>
+                                    <% if (user?._id.toString() == u._id.toString()) return %>
+
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                    <div class="single-user" data-userid="<%= u._id %>">
+                                        <div class="username"><%= u.username %></div>
+                                        <div class="roles">
+                                            <button class="role-button one" data-role="user"><img src="/img/user.svg" alt=""></button>
+                                            <button class="role-button two" data-role="moder"><img src="/img/moder.svg" alt=""></button>
+                                            <button class="role-button three" data-role="admin"><img src="/img/admin.svg" alt=""></button>
+                                        </div>
+                                    </div>
+                                <% }) %>
+                            </div>
+                            <div class="chatuserserror"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="create">Create Chat</button>
+            </form>     
+        </section>
+        
+    </main>
+    <script src="/scripts/createchatscript.js"></script>
+    <script src="/scripts/mobilesidebar.js"></script>
+</body>
+</html>
