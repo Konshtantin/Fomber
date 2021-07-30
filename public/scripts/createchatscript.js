@@ -6,6 +6,7 @@ const chatUsersError = document.querySelector('.chatuserserror')
 
 const createChatController = (() => {
 
+    let close = false
     const chatusers = []
 
     roleButtons.forEach(roleButton => {
@@ -40,6 +41,7 @@ const createChatController = (() => {
 
     createButton.addEventListener('click', (event) => {
         event.preventDefault()
+        if(close) return
         const chatname = createChatForm.chatname.value.trim()
         if(chatname.length < 4) {
             chatnameError.textContent = "Chat Name length must't be less then 4"
@@ -49,7 +51,7 @@ const createChatController = (() => {
             chatUsersError.textContent = 'There must be no less than one person in the chat besides you'
             return
         }
-        
+        close = true
         fetch('/chat/createchat', {
             method: 'POST',
             body: JSON.stringify({

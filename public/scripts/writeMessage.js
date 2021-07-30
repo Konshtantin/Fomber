@@ -3,6 +3,8 @@ const sendButton = document.querySelector('.send')
 const mesBoard = document.querySelector('.message-board')
 
 const writeMessageController = (() => {
+    let close = false
+
     const scrollToEnd = () => {
         mesBoard.scrollTop += mesBoard.scrollHeight
         window.scrollY += innerHeight
@@ -31,7 +33,8 @@ const writeMessageController = (() => {
     const sendMessage = () => {
         const text = messageInput.value.trim()
         const chat = location.pathname.split('/')[2]
-        if(text.length === 0 || text.length > 1000) return
+        if(text.length === 0 || text.length > 1000 || close) return
+        close = true
         fetch('/chat/message', {
             method: 'POST',
             body: JSON.stringify({text, chat, date: Date.now()}),
@@ -42,11 +45,13 @@ const writeMessageController = (() => {
                 if(data.message) {
                     messageInput.value = ''
                     createMessage(text, data.message.date)
+                    close = false
                 }
             })
     }
     
     const enterMessage = (event) => {
+        if(close) return
         if(event.code = 'Enter' && messageInput.value.trim().length > 0) {
             sendMessage()
         }
@@ -62,6 +67,7 @@ const writeMessageController = (() => {
     })
     
     sendButton.addEventListener('click', (event) => {
+        if(close) return
         sendMessage()
     })
     
